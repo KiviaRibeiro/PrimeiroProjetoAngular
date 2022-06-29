@@ -1,29 +1,64 @@
-<header class="cabecalho">
-  <nav class="cabecalhomenu">
-     <a class="itemmenu" href="#">Home</a>
-     <a class="itemmenu" href="#">Quem Somos</a>
-     <a class="itemmenu" href="#">Projetos</a>
-     <a class="itemmenu" href="#">Contato</a>
-  </nav><!--cabecalhomenu-->
-</header><!--cabecalho-->
 
-<main class="conteudo">
-  <section class="conteudo-principal">
-      <div class="conteudoescrito">
-          <h1 class="conteudotitulo">Robot</h1>
-          <h2 class="conteudosubtitulo">Conheça nosso Robot</h2>
-          <button class="conteudobotao">Cadastre-se</button>
-      </div>
-      
-  </section>
-  <section class="conteudosecundario">
-          <h3 class="secundariotitulo">Lorem Ipsum</h3>
-          <p class="secundarioparagrafo">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          <p class="secundarioparagrafo">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-          <p class="secundarioparagrafo">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-  </section>
-</main>
+<!-- Diretivas de Atributos -->
 
-<footer class="rodape">
- 
-</footer>
+<div class="alert alert-primary text-center" role="alert">
+    <p>Contador em Angular</p> 
+  </div>
+
+    <div 
+    [ngStyle]="{background: count < 6 ? 'red' : 'green'}"  
+    [ngClass]="{text: count > 5}">
+    <h2 class="text-center">Contador: {{count}}</h2>
+    </div>
+
+  <!-- Diretivas Estruturais -->
+     <h2 *ngIf="count >= 6; else menor">O contador passou de 6!</h2>
+
+    <ng-template #menor>
+        <h2 *ngIf="count < 6">O contador é menor que 6!</h2>
+    </ng-template>
+
+    <ul [ngSwitch]="count" class="list-group mx-auto col-3">
+        <li class="list-group-item"
+        *ngSwitchCase="1">
+        É igual a 1
+
+        <li class="list-group-item"
+        *ngSwitchCase="3">
+        É igual a 3
+
+        <li class="list-group-item"
+        *ngSwitchCase="5">
+        É igual a 5
+
+        <li class="list-group-item"
+        *ngSwitchCase="7">
+        É igual a 7
+        </li>
+
+        <li class="list-group-item"
+        *ngSwitchCase="9">
+        É igual a 9
+
+        <li class="list-group-item"
+        *ngSwitchDefault="" >
+        Default   
+    </ul>
+
+    <ul  class="list-group mx-auto my-3 col-3">
+        <li class="list-group-item"
+         *ngFor="let pessoa of pessoas">  
+         Nome: {{pessoa.nome}} {{pessoa.sobrenome}}
+        </li>
+    </ul>
+
+    <h3 appMarcatexto>
+        {{nome}}
+    </h3>
+    <button type="button" class="btn btn-primary" (click)="clicou('Kivia')">Clique!</button>
+
+    <div class="col-4 mx-auto">
+    <input type="text" class="form-control" placeholder="Digite uma mensagem..."
+    [(ngModel)]="teste">
+    <h4>Saída: {{teste}}</h4>
+    </div>
